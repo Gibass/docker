@@ -1,0 +1,29 @@
+services:
+#  php:
+#    image: gibass/php:8.4
+#    build:
+#      context: .
+#      dockerfile: docker/php/Dockerfile
+#      args:
+#        INSTALL_XDEBUG: "0"
+#    container_name: php84-dev
+#    working_dir: /var/www/html
+#    volumes:
+#      - ./:/var/www/html
+#      # Drop custom ini files in this folder to override defaults.
+#      - ./docker/php/conf:/php-extra-ini:ro
+#    environment:
+#      PHP_EXTRA_INI_DIR: /php-extra-ini
+#    command: php-fpm
+  php:
+    image: gibass/php:8.4
+    build:
+      context: .
+      args:
+        INSTALL_XDEBUG: "1"
+    container_name: docker-php
+    volumes:
+      - ./:/var/www/html
+      - ./docker/php/conf:/php-extra-ini:ro
+    environment:
+      PHP_EXTRA_INI_DIR: /php-extra-ini
