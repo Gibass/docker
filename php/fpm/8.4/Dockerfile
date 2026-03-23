@@ -6,23 +6,38 @@ ARG INSTALL_XDEBUG=0
 # Install runtime libraries, compile PHP extensions, then drop build-only packages.
 RUN set -eux; \
     apk add --no-cache \
+        freetype \
         git \
         icu-data-full \
         icu-libs \
+        libjpeg-turbo \
         libpq \
+        libpng \
+        libwebp \
         libzip \
+        shadow \
         unzip \
         zip \
     ; \
     apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
+        freetype-dev \
         icu-dev \
+        libjpeg-turbo-dev \
+        libpng-dev \
+        libwebp-dev \
         libzip-dev \
         linux-headers \
         postgresql-dev \
     ; \
+    docker-php-ext-configure gd \
+        --with-freetype \
+        --with-jpeg \
+        --with-webp \
+    ; \
     docker-php-ext-install -j"$(nproc)" \
         bcmath \
+        gd \
         intl \
         opcache \
         pdo_mysql \

@@ -3,7 +3,7 @@
 Cette base fournit:
 - PHP `8.4-fpm-alpine`
 - Composer 2
-- Extensions utiles (`intl`, `bcmath`, `pdo_mysql`, `pdo_pgsql`, `zip`, `opcache`)
+- Extensions utiles (`intl`, `bcmath`, `gd`, `pdo_mysql`, `pdo_pgsql`, `zip`, `opcache`)
 - Réglages de performance communs (`dev` + `prod`) intégrés dans l'image
 - Surcharge de config PHP via des fichiers `.ini` ajoutés au runtime
 - Exécution de scripts custom au démarrage du conteneur
